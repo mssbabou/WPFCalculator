@@ -46,9 +46,6 @@ namespace Calculator.ViewModels
                 case "C":
                     DisplayText = string.Empty;
                     break;
-                case "CE":
-                    DisplayText = string.Empty;
-                    break;
                 case "Back":
                     DisplayText = !string.IsNullOrEmpty(displayText) ? DisplayText.Substring(0, DisplayText.Length - 1) : "";
                     break;
@@ -69,7 +66,11 @@ namespace Calculator.ViewModels
 
         private void EqualsButton()
         {
-            DisplayText = model.CalculateExpression(DisplayText).ToString();
+            double? result = model.CalculateExpression(DisplayText);
+            if(result != null)
+                DisplayText = result.ToString();
+            else
+                DisplayText = string.Empty;
         }
     }
 }

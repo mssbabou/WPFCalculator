@@ -85,7 +85,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" FlowDirection="RightToLeft">
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" >
             <TextBox Text="{Binding DisplayText}" TextWrapping="NoWrap" Background="Transparent" BorderBrush="Transparent" Foreground="white" Margin="10" VerticalAlignment="Center" FontSize="25" />
         </ScrollViewer>
         
