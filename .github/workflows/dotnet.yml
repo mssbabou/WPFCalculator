@@ -26,7 +26,7 @@ jobs:
       run: dotnet publish --configuration Release --output ./publish
 
     - name: Zip Artifacts
-      run: Compress-Archive -Path ./publish/* -DestinationPath Calculator.zip
+      run: Compress-Archive -Path ./publish/* -DestinationPath Calculator-#${{ github.run_number }}.zip
 
     - name: Get short SHA
       id: shortsha
@@ -40,7 +40,7 @@ jobs:
         draft: false
         prerelease: false
         tag_name: Calculator-#${{ github.run_number }}
-        name: Calculator-#${{ github.run_number }}
+        name: Calculator Release ${{ github.run_number }}
         body: 'New release of Calculator App'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
