@@ -39,7 +39,7 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         draft: false
         prerelease: false
-        tag_name: ${{ github.ref }} # This might need adjustment
+        tag_name: Calculator-#${{ github.run_number }} # This might need adjustment
         name: Calculator-${{ env.SHORT_SHA }}
         body: 'New release of CalculatorApp'
       env:
