@@ -23,10 +23,10 @@ jobs:
       run: dotnet build --configuration Release --no-restore
 
     - name: Publish
-      run: dotnet publish --configuration Release --output ./publish
+      run: dotnet publish --configuration Release
 
     - name: Zip Artifacts
-      run: Compress-Archive -Path ./publish/* -DestinationPath CalculatorApp.zip
+      run: Compress-Archive -Path /* -DestinationPath CalculatorApp.zip
 
     - name: Get short SHA
       id: shortsha
