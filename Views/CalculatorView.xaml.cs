@@ -21,12 +21,23 @@ namespace Calculator.Views
     /// </summary>
     public partial class CalculatorView : UserControl
     {
-        private CalculatorViewModel viewModel;
+        private readonly CalculatorViewModel viewModel;
         public CalculatorView()
         {
             viewModel = new CalculatorViewModel();
             DataContext = viewModel;
             InitializeComponent();
         }
+
+        private void FilterAllowedChars(object sender, TextCompositionEventArgs e)
+        {
+            string allowedCharacters = "0123456789()/-*+.";
+
+            if (e.Text.Any(c => !allowedCharacters.Contains(c)))
+            {
+                e.Handled = true;
+            }
+        }
+
     }
 }

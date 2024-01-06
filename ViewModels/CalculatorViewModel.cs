@@ -11,11 +11,21 @@ namespace Calculator.ViewModels
 {
     internal class CalculatorViewModel : ViewModelBase
     {
+        // Private Fields
         private CalculatorModel model;
         private string displayText = string.Empty;
 
-        public ICommand NumberButtonCommand { get; set; }
-        public ICommand OperatorButtonCommand { get; set; }
+        // Constructor
+        public CalculatorViewModel()
+        {
+            model = new CalculatorModel();
+            InputButtonCommand = new SimpleCommand(param => InputButton(param as string));
+            FunctionButtonCommand = new SimpleCommand(param => FunctionButton(param as string));
+            EqualsButtonCommand = new SimpleCommand(param => EqualsButton());
+        }
+
+        // Public Properties
+        public ICommand InputButtonCommand { get; set; }
         public ICommand EqualsButtonCommand { get; set; }
         public ICommand FunctionButtonCommand { get; set; }
 
@@ -29,16 +39,7 @@ namespace Calculator.ViewModels
             }
         }
 
-        public CalculatorViewModel()
-        {
-            model = new CalculatorModel();
-
-            NumberButtonCommand = new SimpleCommand(param => NumberButton(param as string));
-            OperatorButtonCommand = new SimpleCommand(param => OperatorButton(param as string));
-            FunctionButtonCommand = new SimpleCommand(param => FunctionButton(param as string));
-            EqualsButtonCommand = new SimpleCommand(param => EqualsButton());
-        }
-
+        // Private Methods
         private void FunctionButton(string function)
         {
             switch (function)
@@ -54,20 +55,15 @@ namespace Calculator.ViewModels
             }
         }
 
-        private void NumberButton(string number)
+        private void InputButton(string input)
         {
-            DisplayText += number;
-        }
-
-        private void OperatorButton(string operation)
-        {
-            DisplayText += operation;
+            DisplayText += input;
         }
 
         private void EqualsButton()
         {
             double? result = model.CalculateExpression(DisplayText);
-            if(result != null)
+            if (result != null)
                 DisplayText = result.ToString();
             else
                 DisplayText = string.Empty;
