@@ -26,7 +26,7 @@ jobs:
       run: dotnet publish --configuration Release --output ./publish
 
     - name: Zip Artifacts
-      run: Compress-Archive -Path ./publish/* -DestinationPath CalculatorApp.zip
+      run: Compress-Archive -Path ./publish/* -DestinationPath Calculator.zip
 
     - name: Get short SHA
       id: shortsha
@@ -39,9 +39,9 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         draft: false
         prerelease: false
-        tag_name: Calculator-#${{ github.run_number }}
-        name: Calculator-#${{ github.run_number }}
-        body: 'New release of CalculatorApp'
+        tag_name: Calculator build#$SHORT_SHA
+        name: Calculator build#$SHORT_SHA
+        body: 'New release of Calculator App'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -49,8 +49,8 @@ jobs:
       uses: actions/upload-release-asset@v1
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./CalculatorApp.zip
-        asset_name: CalculatorApp.zip
+        asset_path: ./Calculator.zip
+        asset_name: Calculator.zip
         asset_content_type: application/zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
