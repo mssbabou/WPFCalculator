@@ -135,7 +135,7 @@
         </ScrollViewer>
 
         <Button Style="{StaticResource HistoryButton}" Grid.Row="0" Click="Button_Click" ToolTip="Calculation History" Width="20" Height="20">
-            <svgc:SvgViewbox Margin="0 0 0 -48" Source="C:\Users\mssba\Desktop\Programming1\Code\WPFCalculator\Assets\Icons\history_weight300.svg"/>
+            <svgc:SvgViewbox Margin="0 0 0 -48" Source="Assets\Icons\history_weight300.svg"/>
         </Button>
         
         <Grid Grid.Row="1" Margin="2">
