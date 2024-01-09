@@ -11,11 +11,9 @@ namespace Calculator.ViewModels
 {
     internal class CalculatorViewModel : ViewModelBase
     {
-        // Private Fields
         private CalculatorModel model;
         private string displayText = string.Empty;
 
-        // Constructor
         public CalculatorViewModel()
         {
             model = new CalculatorModel();
@@ -24,7 +22,6 @@ namespace Calculator.ViewModels
             EqualsButtonCommand = new SimpleCommand(param => EqualsButton());
         }
 
-        // Public Properties
         public ICommand InputButtonCommand { get; set; }
         public ICommand EqualsButtonCommand { get; set; }
         public ICommand FunctionButtonCommand { get; set; }
@@ -39,15 +36,14 @@ namespace Calculator.ViewModels
             }
         }
 
-        // Private Methods
         private void FunctionButton(string function)
         {
             switch (function)
             {
-                case "C":
+                case "c":
                     DisplayText = string.Empty;
                     break;
-                case "Back":
+                case "back":
                     DisplayText = !string.IsNullOrEmpty(displayText) ? DisplayText.Substring(0, DisplayText.Length - 1) : "";
                     break;
                 default:

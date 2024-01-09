@@ -10,6 +10,11 @@
 
   <ItemGroup>
     <PackageReference Include="CoreCLR-NCalc" Version="3.0.119" />
+    <PackageReference Include="SharpVectors" Version="1.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Assets\" />
   </ItemGroup>
 
 </Project>

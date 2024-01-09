@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Calculator.Views"
+             xmlns:local="clr-namespace:Calculator.Views" 
+             xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
              mc:Ignorable="d" 
              d:DesignHeight="475" d:DesignWidth="300">
     
@@ -77,6 +78,30 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="HistoryButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" BorderThickness="0" CornerRadius="3">
+                            <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#47B1EA"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#42A1D5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <Style TargetType="TextBox">
             <Setter Property="Template">
                 <Setter.Value>
@@ -105,9 +130,13 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" >
+        <ScrollViewer Grid.Row="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" >
             <TextBox Text="{Binding DisplayText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PreviewTextInput="FilterAllowedChars" TextWrapping="NoWrap" Background="Transparent" BorderBrush="Transparent" Foreground="white" Margin="10" VerticalAlignment="Center" FontSize="25" />
         </ScrollViewer>
+
+        <Button Style="{StaticResource HistoryButton}" Grid.Row="0" Click="Button_Click" ToolTip="Calculation History" Width="20" Height="20">
+            <svgc:SvgViewbox Margin="0 0 0 -48" Source="C:\Users\mssba\Desktop\Programming1\Code\WPFCalculator\Assets\Icons\history_weight300.svg"/>
+        </Button>
         
         <Grid Grid.Row="1" Margin="2">
             <Grid.RowDefinitions>
@@ -127,8 +156,8 @@
 
             <Button Style="{StaticResource FunctionButtonStyle}" Grid.Row="0" Grid.Column="0" Content="(" Command="{Binding InputButtonCommand}" CommandParameter="("></Button>
             <Button Style="{StaticResource FunctionButtonStyle}" Grid.Row="0" Grid.Column="1" Content=")" Command="{Binding InputButtonCommand}" CommandParameter=")"></Button>
-            <Button Style="{StaticResource FunctionButtonStyle}" Grid.Row="0" Grid.Column="2" Content="C" Command="{Binding FunctionButtonCommand}" CommandParameter="C"></Button>
-            <Button Style="{StaticResource FunctionButtonStyle}" Grid.Row="0" Grid.Column="3" Content="⌫" Command="{Binding FunctionButtonCommand}" CommandParameter="Back"></Button>
+            <Button Style="{StaticResource FunctionButtonStyle}" Grid.Row="0" Grid.Column="2" Content="C" Command="{Binding FunctionButtonCommand}" CommandParameter="c"></Button>
+            <Button Style="{StaticResource FunctionButtonStyle}" Grid.Row="0" Grid.Column="3" Content="⌫" Command="{Binding FunctionButtonCommand}" CommandParameter="back"></Button>
 
             <Button Style="{StaticResource NumberButtonStyle}" Grid.Row="1" Grid.Column="0" Content="7" Command="{Binding InputButtonCommand}" CommandParameter="7"></Button>
             <Button Style="{StaticResource NumberButtonStyle}" Grid.Row="1" Grid.Column="1" Content="8" Command="{Binding InputButtonCommand}" CommandParameter="8"></Button>

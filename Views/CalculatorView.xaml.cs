@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -31,13 +32,15 @@ namespace Calculator.Views
 
         private void FilterAllowedChars(object sender, TextCompositionEventArgs e)
         {
-            string allowedCharacters = "0123456789()/-*+.";
-
-            if (e.Text.Any(c => !allowedCharacters.Contains(c)))
+            if (!Regex.IsMatch(e.Text, @"^[0123456789()\-*/+.]+$"))
             {
                 e.Handled = true;
             }
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
