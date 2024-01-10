@@ -9,12 +9,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CoreCLR-NCalc" Version="3.0.119" />
-    <PackageReference Include="SharpVectors" Version="1.8.2" />
+    <None Remove="Assets\Icons\history_weight200.svg" />
+    <None Remove="Assets\Icons\history_weight300.png" />
+    <None Remove="Assets\Icons\history_weight300.svg" />
+    <None Remove="Assets\Icons\history_weight400.svg" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Assets\" />
+    <PackageReference Include="CoreCLR-NCalc" Version="3.0.119" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Icons\history_weight200.svg" />
+    <Resource Include="Assets\Icons\history_weight300.png" />
+    <Resource Include="Assets\Icons\history_weight300.svg" />
+    <Resource Include="Assets\Icons\history_weight400.svg" />
   </ItemGroup>
 
 </Project>

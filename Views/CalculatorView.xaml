@@ -134,8 +134,8 @@
             <TextBox Text="{Binding DisplayText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PreviewTextInput="FilterAllowedChars" TextWrapping="NoWrap" Background="Transparent" BorderBrush="Transparent" Foreground="white" Margin="10" VerticalAlignment="Center" FontSize="25" />
         </ScrollViewer>
 
-        <Button Style="{StaticResource HistoryButton}" Grid.Row="0" Click="Button_Click" ToolTip="Calculation History" Width="20" Height="20">
-            <svgc:SvgViewbox Margin="0 0 0 -48" Source="Assets\Icons\history_weight300.svg"/>
+        <Button Style="{StaticResource HistoryButton}" Grid.Row="0" Click="Button_Click" ToolTip="Calculation History" Width="24" Height="24">
+            <Image Source="/Assets/Icons/history_weight300.png" />
         </Button>
         
         <Grid Grid.Row="1" Margin="2">
